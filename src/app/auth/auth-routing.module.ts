@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NbAuthComponent } from '@nebular/auth';
-import { NgxMobileComponent } from './login/mobile.component';
-import { NbxOtpComponent } from './logout/otp.component';
+import { NgxMobileComponent } from './mobile/mobile.component';
+import { NbxOtpComponent } from './otp/otp.component';
 
 const routes: Routes = [
   {

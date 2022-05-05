@@ -7,8 +7,8 @@ import { NgxAuthRoutingModule } from './auth-routing.module';
 import { NbAuthModule } from '@nebular/auth';
 import { NbAlertModule, NbButtonModule, NbCheckboxModule, NbIconModule, NbInputModule } from '@nebular/theme';
 
-import { NgxMobileComponent } from './login/mobile.component'; 
-import { NbxOtpComponent } from './logout/otp.component';
+import { NgxMobileComponent } from './mobile/mobile.component'; 
+import { NbxOtpComponent } from './otp/otp.component';
 
 
 @NgModule({
