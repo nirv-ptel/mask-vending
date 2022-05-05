@@ -1,0 +1,71 @@
+import { Component, OnInit } from '@angular/core';
+import {  FormBuilder,   FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NbComponentStatus, NbGlobalPhysicalPosition, NbToastrService } from '@nebular/theme';
+
+@Component({
+  selector: 'ngx-logout',
+  templateUrl: './otp.component.html',
+})
+export class NbxOtpComponent implements OnInit{
+
+  constructor(
+    private _fb: FormBuilder,
+    private _router: Router,
+    private toastrService: NbToastrService
+  ) { }
+
+  optForm: FormGroup;
+
+  ngOnInit() {
+    this.optForm = this._fb.group({
+      otp: ['', Validators.required, Validators.pattern, Validators.max]
+    });
+  }
+
+  NumberOnly(event) {
+    if (event.key.length === 1 && ((event.which < 48 || event.which > 57) && (event.which < 96 || event.which > 105))) {
+      event.preventDefault();
+    }
+  }
+
+  onSubmitOpt() {
+  
+  }
+  btn1() {
+    this.optForm.get("otp").setValue(this.optForm.get("otp").value + "1");
+  }
+  btn2() {
+    this.optForm.get("otp").setValue(this.optForm.get("otp").value + "2");
+  }
+  btn3() {
+    this.optForm.get("otp").setValue(this.optForm.get("otp").value + "3");
+  }
+  btn4() {
+    this.optForm.get("otp").setValue(this.optForm.get("otp").value + "4");
+  }
+  btn5() {
+    this.optForm.get("otp").setValue(this.optForm.get("otp").value + "5");
+  }
+  btn6() {
+    this.optForm.get("otp").setValue(this.optForm.get("otp").value + "6");
+  }
+  btn7() {
+    this.optForm.get("otp").setValue(this.optForm.get("otp").value + "7");
+  }
+  btn8() {
+    this.optForm.get("otp").setValue(this.optForm.get("otp").value + "8");
+  }
+  btn9() {
+    this.optForm.get("otp").setValue(this.optForm.get("otp").value + "9");
+  }
+  btn0() {
+    this.optForm.get("otp").setValue(this.optForm.get("otp").value + "0");
+  }
+
+  btnx() {
+    this.optForm.get("otp").setValue(this.optForm.get("otp").value.slice(0, -1));
+  }
+
+    
+}
