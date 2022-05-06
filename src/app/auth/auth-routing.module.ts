@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NbAuthComponent } from '@nebular/auth';
+import { NgxHomeComponent } from './home/home.component';
 import { NgxMobileComponent } from './mobile/mobile.component';
 import { NbxOtpComponent } from './otp/otp.component';
 
@@ -17,9 +18,13 @@ const routes: Routes = [
         path: 'otp',
         component: NbxOtpComponent, 
       },
+      {
+        path: 'home',
+        component: NgxHomeComponent, 
+      },
       { 
         path: '', 
-        redirectTo: 'mobile', 
+        redirectTo: 'home', 
         pathMatch: 'full' 
       },
     ],

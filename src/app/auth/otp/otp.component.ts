@@ -4,10 +4,13 @@ import { Router } from '@angular/router';
 import { NbComponentStatus, NbGlobalPhysicalPosition, NbToastrService } from '@nebular/theme';
 
 @Component({
-  selector: 'ngx-logout',
+  selector: 'ngx-otp',
   templateUrl: './otp.component.html',
 })
 export class NbxOtpComponent implements OnInit{
+  intervalId: NodeJS.Timeout;
+  time: number = 30;
+  timeDisplay: number = 100;
 
   constructor(
     private _fb: FormBuilder,
@@ -21,6 +24,15 @@ export class NbxOtpComponent implements OnInit{
     this.optForm = this._fb.group({
       otp: ['', Validators.required, Validators.pattern, Validators.max]
     });
+
+    this.intervalId = setInterval(() => {
+      this.time = this.time - 1;
+      this.timeDisplay = this.timeDisplay - 3.3333;
+      if(this.time == 0) {
+        this._router.navigate(['auth']);
+      }
+    }, 1000);
+    
   }
 
   NumberOnly(event) {

@@ -4,10 +4,12 @@ import { Router } from '@angular/router';
 import { NbComponentStatus, NbGlobalPhysicalPosition, NbToastrService } from '@nebular/theme';
 
 @Component({
-  selector: 'ngx-login',
+  selector: 'ngx-mobile',
   templateUrl: './mobile.component.html',
 })
 export class NgxMobileComponent implements OnInit {
+  intervalId: NodeJS.Timeout;
+  time: number = 0;
 
   constructor(
     private _fb: FormBuilder,
@@ -21,6 +23,24 @@ export class NgxMobileComponent implements OnInit {
     this.loginForm = this._fb.group({
       phoneno: ['', Validators.required, Validators.pattern, Validators.max]
     });
+
+    this.intervalId = setInterval(() => {
+      this.time = this.time + 1;
+      if(this.time == 30) {
+        this._router.navigate(['auth']);
+      }
+    }, 1000);
+
+    document.body.addEventListener('click', () => this.reset());
+    document.body.addEventListener('mouseover',()=> this.reset());
+    document.body.addEventListener('mouseout',() => this.reset());
+    document.body.addEventListener('keydown',() => this.reset());
+    document.body.addEventListener('keyup',() => this.reset());
+    document.body.addEventListener('keypress',() => this.reset());
+    
+  }
+  reset(): any {
+    this.time = 0;
   }
 
   NumberOnly(event) {

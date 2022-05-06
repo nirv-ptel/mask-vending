@@ -5,11 +5,11 @@ import { RouterModule } from '@angular/router';
 
 import { NgxAuthRoutingModule } from './auth-routing.module';
 import { NbAuthModule } from '@nebular/auth';
-import { NbAlertModule, NbButtonModule, NbCheckboxModule, NbIconModule, NbInputModule } from '@nebular/theme';
+import { NbAlertModule, NbButtonModule, NbCheckboxModule, NbIconModule, NbInputModule, NbProgressBarModule } from '@nebular/theme';
 
 import { NgxMobileComponent } from './mobile/mobile.component'; 
 import { NbxOtpComponent } from './otp/otp.component';
-
+import { NgxHomeComponent } from './home/home.component';
 
 @NgModule({
   imports: [
@@ -23,11 +23,13 @@ import { NbxOtpComponent } from './otp/otp.component';
     NgxAuthRoutingModule,
     NbIconModule,
     NbAuthModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NbProgressBarModule
   ],
   declarations: [
     NgxMobileComponent,
-    NbxOtpComponent
+    NbxOtpComponent,
+    NgxHomeComponent
   ],
 })
 export class NgxAuthModule {
