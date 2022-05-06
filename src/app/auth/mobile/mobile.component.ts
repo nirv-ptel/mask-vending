@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {  FormBuilder,   FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NbComponentStatus, NbGlobalPhysicalPosition, NbToastrService } from '@nebular/theme';
+import { DataService } from '../../@service/data.service';
+import { NbxOtpComponent } from '../otp/otp.component';
 
 @Component({
   selector: 'ngx-mobile',
@@ -14,14 +16,16 @@ export class NgxMobileComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _router: Router,
-    private toastrService: NbToastrService
+    private data: DataService
   ) { }
+
+  @ViewChild(NbxOtpComponent) child;
 
   loginForm: FormGroup;
 
   ngOnInit() {
     this.loginForm = this._fb.group({
-      phoneno: ['', Validators.required, Validators.pattern, Validators.max]
+      mobile: ['', Validators.required, Validators.pattern, Validators.max]
     });
 
     this.intervalId = setInterval(() => {
@@ -50,41 +54,42 @@ export class NgxMobileComponent implements OnInit {
   }
 
   login() {
-  
+    this.data.data = this.loginForm.value.mobile;
+    this._router.navigate(['auth/otp']);
   }
   btn1() {
-    this.loginForm.get("phoneno").setValue(this.loginForm.get("phoneno").value + "1");
+    this.loginForm.get("mobile").setValue(this.loginForm.get("mobile").value + "1");
   }
   btn2() {
-    this.loginForm.get("phoneno").setValue(this.loginForm.get("phoneno").value + "2");
+    this.loginForm.get("mobile").setValue(this.loginForm.get("mobile").value + "2");
   }
   btn3() {
-    this.loginForm.get("phoneno").setValue(this.loginForm.get("phoneno").value + "3");
+    this.loginForm.get("mobile").setValue(this.loginForm.get("mobile").value + "3");
   }
   btn4() {
-    this.loginForm.get("phoneno").setValue(this.loginForm.get("phoneno").value + "4");
+    this.loginForm.get("mobile").setValue(this.loginForm.get("mobile").value + "4");
   }
   btn5() {
-    this.loginForm.get("phoneno").setValue(this.loginForm.get("phoneno").value + "5");
+    this.loginForm.get("mobile").setValue(this.loginForm.get("mobile").value + "5");
   }
   btn6() {
-    this.loginForm.get("phoneno").setValue(this.loginForm.get("phoneno").value + "6");
+    this.loginForm.get("mobile").setValue(this.loginForm.get("mobile").value + "6");
   }
   btn7() {
-    this.loginForm.get("phoneno").setValue(this.loginForm.get("phoneno").value + "7");
+    this.loginForm.get("mobile").setValue(this.loginForm.get("mobile").value + "7");
   }
   btn8() {
-    this.loginForm.get("phoneno").setValue(this.loginForm.get("phoneno").value + "8");
+    this.loginForm.get("mobile").setValue(this.loginForm.get("mobile").value + "8");
   }
   btn9() {
-    this.loginForm.get("phoneno").setValue(this.loginForm.get("phoneno").value + "9");
+    this.loginForm.get("mobile").setValue(this.loginForm.get("mobile").value + "9");
   }
   btn0() {
-    this.loginForm.get("phoneno").setValue(this.loginForm.get("phoneno").value + "0");
+    this.loginForm.get("mobile").setValue(this.loginForm.get("mobile").value + "0");
   }
 
   btnx() {
-    this.loginForm.get("phoneno").setValue(this.loginForm.get("phoneno").value.slice(0, -1));
+    this.loginForm.get("mobile").setValue(this.loginForm.get("mobile").value.slice(0, -1));
   }
 
 }

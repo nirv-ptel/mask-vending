@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  FormBuilder,   FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NbComponentStatus, NbGlobalPhysicalPosition, NbToastrService } from '@nebular/theme';
+import { DataService } from '../../@service/data.service';
 
 @Component({
   selector: 'ngx-otp',
@@ -15,12 +16,13 @@ export class NbxOtpComponent implements OnInit{
   constructor(
     private _fb: FormBuilder,
     private _router: Router,
-    private toastrService: NbToastrService
+    private data: DataService
   ) { }
 
   optForm: FormGroup;
 
   ngOnInit() {
+    console.warn(this.data.data);
     this.optForm = this._fb.group({
       otp: ['', Validators.required, Validators.pattern, Validators.max]
     });
@@ -33,6 +35,7 @@ export class NbxOtpComponent implements OnInit{
       }
     }, 1000);
     
+
   }
 
   NumberOnly(event) {
